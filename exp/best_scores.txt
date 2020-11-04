@@ -1,0 +1,1 @@
+Epoch 49. Training LER: 0.946454, validation LER: 0.942271

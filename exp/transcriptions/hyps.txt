@@ -1,0 +1,3 @@
+kids_speech_sample/feat/fabm2bj2.fbank.npy
+DH T
+
