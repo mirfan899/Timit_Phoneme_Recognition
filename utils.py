@@ -193,3 +193,18 @@ public <{}> = {}""".format(name, align))
 
 def get_name_from_path(path):
     return os.path.splitext(os.path.basename(path))[0]
+
+
+def generate_phoneme_file(path):
+    name = os.path.splitext(os.path.basename(path))[0] + ".phonemes"
+    lines = open(path, "r").readlines()
+    phonemes = []
+    for line in lines:
+        start, end, ph = line.split(" ")
+        phonemes.append(ph.strip())
+
+    phonemes.remove("h#")
+    phonemes.remove("h#")
+    phonemes = " ".join(phonemes)
+    with open("data/label/{}".format(name), "w") as f:
+        f.write(phonemes)
