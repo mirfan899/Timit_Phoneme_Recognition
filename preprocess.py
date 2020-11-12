@@ -1,5 +1,5 @@
 import glob
-from utils import get_phonemes_only, get_name_from_path, generate_phoneme_file
+from utils import get_phonemes_only, get_name_from_path, generate_phoneme_file, generate_word_file
 import os
 
 
@@ -18,11 +18,12 @@ def generate_timit_data():
     for subdir, dirs, files in os.walk(root):
         for file in files:
             if "PHN" in file:
-                print("phoneme file")
                 generate_phoneme_file(os.path.join(subdir, file))
-            # elif "WAV" in file:
-            #     os.system("cp {} ./TIMIT/wav/".format(os.path.join(subdir, file)))
-            #     print("Wav file")
+            elif "WRD" in file:
+                generate_word_file(os.path.join(subdir, file))
+            if "WAV" in file:
+                file.replace("WAV", 'wav')
+                os.system("cp {} ./timit/wav/".format(os.path.join(subdir, file)))
             # print(os.path.join(subdir, file))
 
 

@@ -208,3 +208,16 @@ def generate_phoneme_file(path):
     phonemes = " ".join(phonemes)
     with open("data/label/{}".format(name), "w") as f:
         f.write(phonemes)
+
+
+def generate_word_file(path):
+    name = os.path.splitext(os.path.basename(path))[0] + ".txt"
+    lines = open(path, "r").readlines()
+    words = []
+    for line in lines:
+        start, end, word = line.split(" ")
+        words.append(word.strip())
+
+    words = " ".join(words)
+    with open("data/label/{}".format(name), "w") as f:
+        f.write(words)
