@@ -12,3 +12,9 @@ for file in *.WAV; do
     mv "$file" "$(basename "$name").wav"
 done
 ```
+
+For more information on timit experiments and some preprocessing for reduced phonemes and PER
+[Phoneme Info on Timit](https://www.intechopen.com/books/speech-technologies/phoneme-recognition-on-the-timit-database)
+
+Latest algorithm
+https://github.com/pytorch/fairseq/blob/master/examples/wav2vec/README.md
