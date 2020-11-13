@@ -1,8 +1,8 @@
 import glob
-
-from constants import MAP_DICTIONARY
-from utils import get_phonemes_only, get_name_from_path, generate_phoneme_file, generate_word_file
 import os
+from constants import MAP_DICTIONARY
+from utils import get_phonemes_only, get_name_from_path, generate_phoneme_file, generate_word_file, \
+    generate_cmu_phoneme_file
 
 
 def generate_phoneme_files():
@@ -32,16 +32,21 @@ def generate_timit_data():
 
 
 def get_phoneme_list():
-    root = 'timit/label'
+    files = glob.glob('timit/label/*.phonemes')
     phonemes = []
-    for subdir, dirs, files in os.walk(root):
-        for file in files:
-            if "phonemes" in file:
-                lines = open(os.path.join(subdir, file), "r").readlines()
-                for line in lines:
-                    phones = line.split(" ")
-                    phonemes.extend(phones)
+
+    for file in files:
+        lines = open(file, "r").readlines()
+        for line in lines:
+            phones = line.split(" ")
+            phonemes.extend(phones)
     return set(phonemes)
+
+
+def generate_cmu_phonemes():
+    files = glob.glob('timit/label/*.txt')
+    for file in files:
+        generate_cmu_phoneme_file(file)
 
 
 if __name__ == "__main__":
@@ -51,4 +56,3 @@ if __name__ == "__main__":
     print(list(phonemes))
     print(len(phonemes))
     print([MAP_DICTIONARY[el] for el in phonemes])
-

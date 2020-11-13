@@ -210,6 +210,17 @@ def generate_phoneme_file(path):
         f.write(phonemes)
 
 
+def generate_cmu_phoneme_file(path):
+    name = os.path.splitext(os.path.basename(path))[0] + ".phonemes"
+    lines = open(path, "r").readlines()
+    cmu_phonemes = []
+    for line in lines:
+        cmu_phonemes = get_phonemes_only(line)
+    cmu_phonemes = " ".join(cmu_phonemes).lower()
+    with open("data/label/{}".format(name), "w") as f:
+        f.write(cmu_phonemes)
+
+
 def generate_word_file(path):
     name = os.path.splitext(os.path.basename(path))[0] + ".txt"
     lines = open(path, "r").readlines()
