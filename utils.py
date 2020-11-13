@@ -4,7 +4,7 @@ import python_speech_features as python_speech_features
 from scipy.io import wavfile
 import os
 from pocketsphinx import DefaultConfig, Decoder, get_model_path, get_data_path
-from constants import DICTIONARY
+from constants import DICTIONARY, MAP_DICTIONARY
 
 
 def generate_transcripts():
@@ -221,3 +221,7 @@ def generate_word_file(path):
     words = " ".join(words)
     with open("data/label/{}".format(name), "w") as f:
         f.write(words)
+
+
+# def map_61_to_39():
+#     MAP_DICTIONARY
