@@ -206,7 +206,7 @@ def generate_phoneme_file(path):
     phonemes.remove("h#")
     phonemes.remove("h#")
     phonemes = " ".join(phonemes)
-    with open("data/label/{}".format(name), "w") as f:
+    with open("timit/label/{}".format(name), "w") as f:
         f.write(phonemes)
 
 
@@ -217,7 +217,7 @@ def generate_cmu_phoneme_file(path):
     for line in lines:
         cmu_phonemes = get_phonemes_only(line)
     cmu_phonemes = " ".join(cmu_phonemes).lower()
-    with open("data/label/{}".format(name), "w") as f:
+    with open("timit/label/{}".format(name), "w") as f:
         f.write(cmu_phonemes)
 
 
@@ -230,7 +230,7 @@ def generate_word_file(path):
         words.append(word.strip())
 
     words = " ".join(words)
-    with open("data/label/{}".format(name), "w") as f:
+    with open("timit/label/{}".format(name), "w") as f:
         f.write(words)
 
 

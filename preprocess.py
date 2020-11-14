@@ -48,11 +48,14 @@ def generate_cmu_phonemes():
     for file in files:
         generate_cmu_phoneme_file(file)
 
+    return "success"
+
 
 if __name__ == "__main__":
     # generate_phoneme_files()
     # generate_timit_data()
-    phonemes = get_phoneme_list()
-    print(list(phonemes))
-    print(len(phonemes))
-    print([MAP_DICTIONARY[el] for el in phonemes])
+    # phonemes = get_phoneme_list()
+    print(generate_cmu_phonemes())
+    # print(list(phonemes))
+    # print(len(phonemes))
+    # print([MAP_DICTIONARY[el] for el in phonemes])
